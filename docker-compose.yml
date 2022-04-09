@@ -13,7 +13,7 @@ services:
       file: ./transmission/transmission.yml
       service: transmission
     environment:
-      - VIRTUAL_HOST=transmission.localhost
+      - VIRTUAL_HOST=transmission.home-pi.local
       - VIRTUAL_PORT=9091
 
   pyload:
@@ -21,7 +21,7 @@ services:
       file: ./pyload/pyload.yml
       service: pyload
     environment:
-      - VIRTUAL_HOST=pyload.localhost
+      - VIRTUAL_HOST=pyload.home-pi.local
       - VIRTUAL_PORT=8000
 
   # nextcloud:
@@ -29,7 +29,7 @@ services:
   #     file: ./nextcloud/nextcloud.yml
   #     service: nextcloud
   #   environment:
-  #     - VIRTUAL_HOST=nextcloud.localhost
+  #     - VIRTUAL_HOST=nextcloud.home-pi.local
   #     - VIRTUAL_PORT=443
 
   # webtop:
@@ -37,7 +37,7 @@ services:
   #     file: ./webtop/webtop.yml
   #     service: webtop
   #   environment:
-  #     - VIRTUAL_HOST=webtop.localhost
+  #     - VIRTUAL_HOST=webtop.home-pi.local
   #     - VIRTUAL_PORT=3000
 
   # homeassistant:
@@ -45,5 +45,5 @@ services:
   #     file: ./homeassistant/homeassistant.yml
   #     service: homeassistant
   #   environment:
-  #     - VIRTUAL_HOST=homeassistant.localhost
+  #     - VIRTUAL_HOST=homeassistant.home-pi.local
   #     - VIRTUAL_PORT=8123
