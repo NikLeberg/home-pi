@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  transmission:
+    extends:
+      file: ../common/common.yml
+      service: common
+    container_name: transmission
+    hostname: transmission
+    image: lscr.io/linuxserver/transmission
+    volumes:
+      - /data/transmission/config:/config/
+      - /data/transmission/downloads:/downloads/
+      - /data/transmission/watch:/watch/
+    expose:
+      - 9091
+    ports:
+      - 51413:51413
+      - 51413:51413/udp

@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+  reverse-proxy:
+    image: nginxproxy/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  transmission:
+    extends:
+      file: ./transmission/transmission.yml
+      service: transmission
+    environment:
+      - VIRTUAL_HOST=transmission.localhost
+      - VIRTUAL_PORT=9091
+
+  pyload:
+    extends:
+      file: ./pyload/pyload.yml
+      service: pyload
+    environment:
+      - VIRTUAL_HOST=pyload.localhost
+      - VIRTUAL_PORT=8000
+
+  # nextcloud:
+  #   extends:
+  #     file: ./nextcloud/nextcloud.yml
+  #     service: nextcloud
+  #   environment:
+  #     - VIRTUAL_HOST=nextcloud.localhost
+  #     - VIRTUAL_PORT=443
+
+  # webtop:
+  #   extends:
+  #     file: ./webtop/webtop.yml
+  #     service: webtop
+  #   environment:
+  #     - VIRTUAL_HOST=webtop.localhost
+  #     - VIRTUAL_PORT=3000
+
+  # homeassistant:
+  #   extends:
+  #     file: ./homeassistant/homeassistant.yml
+  #     service: homeassistant
+  #   environment:
+  #     - VIRTUAL_HOST=homeassistant.localhost
+  #     - VIRTUAL_PORT=8123

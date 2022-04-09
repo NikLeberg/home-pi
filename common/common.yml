@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  common:
+    restart: unless-stopped
+    environment:
+      TZ: Europe/Zurich
+      PUID: 1000
+      PGID: 1000

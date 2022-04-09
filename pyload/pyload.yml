@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  pyload:
+    extends:
+      file: ../common/common.yml
+      service: common
+    container_name: pyload
+    hostname: pyload
+    image: lscr.io/linuxserver/pyload-ng
+    volumes:
+      - /data/pyload/config:/config/
+      - /data/pyload/downloads:/downloads/
+    expose:
+      - 8000
+    ports:
+      - 9666:9666 # click'n'load
