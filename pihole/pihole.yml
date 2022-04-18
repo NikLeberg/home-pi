@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  pihole:
+    extends:
+      file: ../common/common.yml
+      service: common
+    container_name: pihole
+    hostname: pihole
+    image: pihole/pihole:2022.01.1
+    volumes:
+      - /data/pihole/config/etc-pihole:/etc/pihole/
+      - /data/pihole/config/etc-dnsmasq:/etc/dnsmasq.d
+    environment:
+      WEBPASSWORD: abcd1234
+    expose:
+      - 80
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+      - 80:80/tcp
+    cap_add:
+      - NET_ADMIN
+    user: $PUID:$PGID
