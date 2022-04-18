@@ -2,9 +2,11 @@ version: '2'
 
 services:
   reverse-proxy:
+    container_name: reverse-proxy
+    hostname: reverse-proxy
     image: nginxproxy/nginx-proxy
     ports:
-      - "80:80"
+      - 80:80
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
